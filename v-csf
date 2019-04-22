@@ -34,14 +34,11 @@ foreach my $pair (@pairs) {
 	$value =~ s/%([a-fA-F0-9][a-fA-F0-9])/pack("C", hex($1))/eg;
 	$FORM{$name} = $value;
 }
-
 print <<EOF;
-
 EOF
 unless ($FORM{action} eq "tailcmd" or $FORM{action} eq "logtailcmd" or $FORM{action} eq "loggrepcmd") {
 	print "<img src='images/csf_small.png' align='absmiddle' alt='csf logo'> <b style='font-size: 16px'>ConfigServer Security & Firewall - csf v$myv</b>";
 }
 
 ConfigServer::DisplayUI::main(\%FORM, $script, 0, $images, $myv);
-
 1;
